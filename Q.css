@@ -1,0 +1,161 @@
+body {
+ background-color: #fff;
+ margin: 0;
+ font-family: Arial, sans-serif;
+}
+h1 {
+ font-family: 'Playfair Display', serif;
+ font-weight: bold;
+ margin-bottom: 20px;
+}
+header {
+ background-color: #9f9f9fa5;
+ padding: 20px;
+ text-align: center;
+ border-radius: 25px;
+ border-color: black;
+}
+.text {
+ font-size: 60px;
+}
+.text p {
+font-size: 20px;
+margin-bottom: -35px;
+}
+header h1 {
+ margin: 0;
+}
+.text button {
+ margin-top: 50px;
+ color: #ffffff;
+ background-color: #ff0000;
+ border-radius: 5px;
+ border: none;
+ padding: 10px 20px;
+ cursor: pointer;
+}
+.text button:hover {
+ background-color: #ff3333;
+}
+main {
+ display: flex;
+ flex-wrap: wrap;
+ justify-content: center;
+}
+figure {
+ position: relative;
+ margin: 20px;
+ display: grid; 
+ grid-template-columns: 1fr 1fr; 
+}
+figure img {
+ grid-column: 1;
+ width: 100%;
+ height: 600px;
+ object-fit: cover;
+ border-radius: 10px;
+ padding: 10px;
+ box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+figure p {
+ margin-left: 25px;
+ grid-column: 2;  
+ border-radius: 10px;
+ padding: 15px;
+ box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+.overlay-button {
+ position: absolute;
+ top: 90%; 
+ left: 26%;
+ transform: translateX(-50%);
+ color: #ffffff;
+ background-color: #ff0000;
+ border-radius: 5px;
+ border: none;
+ padding: 10px 20px;
+ cursor: pointer;
+}
+.overlay-button:hover {
+ background-color: #ff3333;
+}
+figure h1 {
+ position: absolute;
+ top: 7%;
+ left: 26%;
+ transform: translate(-50%, -50%);
+ color: #000000;
+ font-size: 25px;
+ text-align: center;
+ width: 25%;
+ border-radius: 10px;
+ background-color: rgb(127, 126, 126);
+ padding: 10px;
+ box-shadow: 0 0 10px rgb(127, 126, 126);
+}
+figure h1:hover {
+ text-decoration: underline;
+}
+@media only screen and (max-width: 600px) {
+ .text {
+   font-size: 24px;
+ }
+ figure {
+   width: 100%; 
+   margin: 10px;
+ }
+}
+4:14
+jsconst applyButtons = document.querySelectorAll('.overlay-button');
+applyButtons.forEach(button => {
+  button.addEventListener('click', () => {
+const universityName = button.closest('figure').querySelector('h1').textContent.trim();
+let link;
+    switch (universityName) {
+      case 'PRINCETON UNIVERSITY':
+        link = 'https://www.princeton.edu/';
+        break;
+      case 'HARVARD UNIVERSITY':
+        link = 'https://www.harvard.edu/';
+        break;
+      case 'YALE UNIVERSITY':
+        link = 'https://www.yale.edu/';
+        break;
+      case 'COLUMBIA UNIVERSITY':
+        link = 'https://www.columbia.edu/';
+        break;
+      case 'STANFORD UNIVERSITY':
+        link = 'https://www.stanford.edu/';
+        break;
+      case 'UNIVERSITY OF CHICAGO':
+        link = 'https://www.uchicago.edu/';
+        break;
+      case 'DUKE UNIVERSITY':
+        link = 'https://www.duke.edu/';
+        break;
+      case 'THE MASSACHUSETTS INSTITUTE OF TECHNOLOGY':
+        link = 'https://www.mit.edu/';
+        break;
+      case 'UNIVERSITY OF PENNSYLVANIA':
+        link = 'https://www.upenn.edu/';
+        break;
+      case 'CALIFORNIA INSTITUTE OF TECHNOLOGY':
+        link = 'https://www.caltech.edu/';
+        break;
+      default:
+        link = 'https://www.example.com/';
+    }
+window.open(link, '_blank');
+  });
+});
+const learnMoreButton = document.querySelector('button');
+learnMoreButton.addEventListener('click', () => {
+  window.open('https://www.quantumbooks.com/science/top-10-universities-in-the-united-states/', '_blank');
+});
+const jsonServer = require('json-server');
+const server = jsonServer.create();
+const router = jsonServer.router('db.json');
+server.use(router);
+server.listen(3000, () => {
+  console.log('Dummy API server listening on port 3000');
+});
