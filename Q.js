@@ -1,4 +1,3 @@
-4:14
 jsconst applyButtons = document.querySelectorAll('.overlay-button');
 applyButtons.forEach(button => {
   button.addEventListener('click', () => {
